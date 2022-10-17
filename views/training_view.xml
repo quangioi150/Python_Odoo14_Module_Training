@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="inherit_training_view">
+            <field name="name">inherit_training_view</field>
+            <field name="model">slide.channel</field>
+            <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <form>
+                        <sheet>
+                            <group>
+                                <field name="sequence" widget="handle"/>
+                                <field name="date_updated"/>
+                                <field name="total_content"/>
+                                <field name="total_learner"/>
+                                <field name="total_question"/>
+                                <field name="status" decoration-success="status == 'Active'"
+                                       decoration-info="status == 'Draft'" decoration-warning="status == 'Inactive'"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="training_information_tree_view">
+            <field name="name">inherit.training.view.tree</field>
+            <field name="model">slide.channel</field>
+            <field name="inherit_id" ref="website_slides.slide_channel_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='enroll']" position="before">
+                    <field name="total_content"/>
+                    <field name="total_learner"/>
+                    <field name="total_question"/>
+                    <field name="status" decoration-success="status == 'Active'"
+                           decoration-info="status == 'Draft'" decoration-warning="status == 'Inactive'"/>
+                </xpath>
+                <xpath expr="//field[@name='enroll']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='website_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

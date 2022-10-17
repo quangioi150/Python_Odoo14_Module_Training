@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="training_information_form_view">
+            <field name="name">inherit_training_view</field>
+            <field name="model">training</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="education_information_tree_view">
+            <field name="name">inherit_training_view</field>
+            <field name="model">training</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="education_act_view" model="ir.actions.act_window">
+            <field name="name">training</field>
+            <field name="res_model">training</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="inherit_course_view">
+            <field name="name">inherit_course_view</field>
+            <field name="model">hr.course</field>
+            <field name="inherit_id" ref="hr.view_course_form"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="Course Name"/>
+                        <field name="Course Description"/>
+                        <field name="Category" widget="many2one_tags"/>
+                        <field name="Type"/>
+                        <field name="Privacy"/>
+                        <field name="Status"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_content_information_form_view">
+            <field name="name">inherit_hr_content_view</field>
+            <field name="model">hr.content</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="No"/>
+                            <field name="Title"/>
+                            <field name="Type"/>
+                            <field name="Duration"/>
+                            <field name="Views"/>
+                            <field name="Status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_content_information_tree_view">
+            <field name="name">content</field>
+            <field name="model">content</field>
+            <field name="arch" type="xml">
+                <tree>
+                <tree name="Question">
+                    <field name="No"/>
+                    <field name="Level"/>
+                    <field name="Question"/>
+                    <field name="Answer"/>
+                    <field name="Point"/>
+                </tree>
+                <tree name="Learner">
+                    <field name="No"/>
+                    <field name="Name"/>
+                    <field name="Department"/>
+                    <field name="Position"/>
+                    <field name="User Group"/>
+                </tree>
+                <tree name="content">
+                    <field name="No"/>
+                    <field name="Title"/>
+                    <field name="Type"/>
+                    <field name="Duration"/>
+                    <field name="Views"/>
+                    <field name="Status"/>
+                </tree>
+            </field>
+        </tree>
+    </record>
+    <record id="content_act_view" model="ir.actions.act_window">
+        <field name="name">content</field>
+        <field name="res_model">content</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_content"
+              name="Content"
+              action="content_act_view"
+              parent="hr.menu_human_resources_configuration"
+              sequence="1"/>
+</data>
+        </odoo>
